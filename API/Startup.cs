@@ -13,6 +13,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
+using AutoMapper;
+using Application.Activities;
+using Application.Core;
+using API.Controllers;
+using API.Extensions;
 
 namespace Api
 {
@@ -29,18 +35,8 @@ namespace Api
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
-            });
-            services.AddDbContext<DataContext>(opt => {
-                opt.UseSqlServer(_config.GetConnectionString("Default"));
-            });
-            services.AddCors(opt => {
-                opt.AddPolicy("CorsPolicy", policy => {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
-                });
-            });
+            services.AddApplicationServices(_config);
+          
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
