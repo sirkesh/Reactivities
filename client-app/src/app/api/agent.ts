@@ -2,7 +2,6 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { Activity } from "../models/activity";
 import { store } from "../stores/store";
-import { useHistory } from "react-router-dom";
 
 const sleep = (delay: number) => {
     return new Promise((resolve) => {
