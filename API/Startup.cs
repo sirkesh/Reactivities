@@ -39,7 +39,9 @@ namespace Api
             services.AddControllers().AddFluentValidation(config => {
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
             });
+
             services.AddApplicationServices(_config);
+            services.AddIdentityServices(_config);
           
         }
 
@@ -62,6 +64,8 @@ namespace Api
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

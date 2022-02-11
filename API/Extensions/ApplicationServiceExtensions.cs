@@ -19,6 +19,7 @@ namespace API.Extensions
             {
                 opt.UseSqlServer(config.GetConnectionString("Default"));
             });
+           
             services.AddCors(opt =>
             {
                 opt.AddPolicy("CorsPolicy", policy =>
